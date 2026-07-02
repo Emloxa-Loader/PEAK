@@ -5,213 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMLOXA | PEAK İNDİRME</title>
     <style>
-        /* Özelleştirilmiş Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #070709; }
-        ::-webkit-scrollbar-thumb { background: #1a1a24; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00ff88; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap');
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Dinamik Animasyonlu Arka Plan */
         body {
-            margin: 0; padding: 0; box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #050507; color: #f3f4f6;
-            display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; overflow-x: hidden; position: relative;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #090a0f, #1a1c2c, #111827, #000000);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            overflow: hidden;
         }
 
-        /* Arka Plan Yumuşak Işık Animasyonu */
-        body::before {
-            content: ''; position: absolute;
-            width: 140%; height: 140%;
-            background: radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.06) 0%, transparent 45%),
-                        radial-gradient(circle at 75% 75%, rgba(0, 188, 255, 0.06) 0%, transparent 50%);
-            top: -20%; left: -20%; z-index: 0;
-            animation: ambientLight 25s ease-in-out infinite alternate;
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        @keyframes ambientLight {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(4%, 2%) rotate(4deg); }
-        }
-
-        .main-container {
-            position: relative; z-index: 10;
-            width: 100%; max-width: 540px; padding: 20px;
-            animation: cardEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-
-        /* Premium Cam Efekti Kart tasarımı */
-        .card {
-            background: rgba(13, 13, 18, 0.70);
-            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+        /* Glassmorphism (Buzlu Cam) Kart Tasarımı */
+        .container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 28px; padding: 55px 45px;
+            padding: 4rem 5rem;
+            border-radius: 24px;
             text-align: center;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.08);
-            position: relative; overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        /* Parlama Efekti Geçişi */
-        .card::after {
-            content: ''; position: absolute;
-            top: -50%; left: -60%; width: 30%; height: 200%;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 100%);
-            transform: rotate(25deg);
-            animation: shimmer 6s infinite ease-in-out;
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        @keyframes shimmer {
-            0% { left: -60%; }
-            30%, 100% { left: 140%; }
+        /* Başlık Tasarımı */
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #00f2fe, #4facfe, #00f2fe);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+            text-shadow: 0px 0px 20px rgba(79, 172, 254, 0.2);
         }
 
-        /* EMLOXA Marka Tagı */
-        .brand-badge {
-            font-size: 11px; text-transform: uppercase; letter-spacing: 0.35em;
-            color: #00ff88; font-weight: 800; margin-bottom: 20px;
-            display: inline-block; background: rgba(0, 255, 136, 0.07);
-            padding: 7px 18px; border-radius: 100px; border: 1px solid rgba(0, 255, 136, 0.15);
+        @keyframes shine {
+            to { background-position: 200% center; }
         }
 
-        /* Başlık Alanı */
-        .title-wrapper h1 {
-            font-size: 64px; font-weight: 900; margin: 0 0 6px 0;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #ffffff 40%, #9ca3af 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
+        p {
+            font-size: 1.1rem;
+            color: #8892b0;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
-        .subtitle {
-            font-size: 14px; color: #71717a; margin-bottom: 45px; font-weight: 500;
-            letter-spacing: 0.05em; text-transform: uppercase;
+        /* İndirme Butonu Tasarımı */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 1.2rem 3.5rem;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            box-shadow: 0 10px 20px rgba(30, 60, 114, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        /* Dosya Detay Paneli */
-        .file-panel {
-            background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 20px; padding: 22px; margin-bottom: 40px;
-            display: flex; align-items: center; justify-content: space-between;
-            text-align: left; transition: border-color 0.3s ease;
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            z-index: -1;
+            transition: opacity 0.4s ease;
+            opacity: 0;
         }
 
-        .file-panel:hover { border-color: rgba(0, 255, 136, 0.15); }
-
-        .file-info-group { display: flex; align-items: center; gap: 18px; }
-
-        .file-icon-box {
-            width: 48px; height: 48px; background: linear-gradient(135deg, #181822, #0d0d13);
-            border-radius: 14px; display: flex; justify-content: center; align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+        .download-btn:hover::before {
+            opacity: 1;
         }
 
-        .file-icon-box svg { width: 24px; height: 24px; fill: #00bcff; }
-
-        .file-texts .file-name { font-size: 17px; font-weight: 600; color: #ffffff; margin-bottom: 3px; }
-        .file-texts .file-type { font-size: 13px; color: #52525b; }
-
-        .verified-tag {
-            font-size: 11px; font-weight: 700; color: #00ff88;
-            background: rgba(0, 255, 136, 0.05); padding: 6px 14px; border-radius: 10px;
-            border: 1px solid rgba(0, 255, 136, 0.12); letter-spacing: 0.05em; text-transform: uppercase;
+        .download-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(79, 172, 254, 0.5);
+            letter-spacing: 1px;
         }
 
-        /* Premium İndirme Butonu */
-        .download-link-wrapper { text-decoration: none; display: block; }
-
-        .btn-premium-download {
-            width: 100%; background: linear-gradient(135deg, #00ff88 0%, #00bcff 100%);
-            color: #040406; border: none; padding: 20px 30px; font-size: 18px; font-weight: 800;
-            border-radius: 20px; cursor: pointer; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 15px 35px rgba(0, 255, 136, 0.15); display: flex; justify-content: center;
-            align-items: center; gap: 14px; letter-spacing: 0.05em;
+        .download-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
         }
 
-        .btn-premium-download svg { width: 22px; height: 22px; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-
-        .download-link-wrapper:hover .btn-premium-download {
-            transform: translateY(-4px); box-shadow: 0 25px 50px rgba(0, 188, 255, 0.25); filter: brightness(1.08);
+        .download-icon {
+            width: 26px;
+            height: 26px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
         }
 
-        .download-link-wrapper:hover svg { transform: translateY(3px); }
-        .download-link-wrapper:active .btn-premium-download { transform: translateY(-1px); }
-
-        /* Güvenlik Bilgisi Alt Bölüm */
-        .security-footer {
-            margin-top: 40px; display: flex; justify-content: center; align-items: center;
-            gap: 30px; border-top: 1px solid rgba(255, 255, 255, 0.04); padding-top: 30px;
+        .download-btn:hover .download-icon {
+            transform: translateY(3px);
         }
 
-        .secure-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #4b5563; font-weight: 500; }
-        .secure-item svg { width: 18px; height: 18px; fill: #4b5563; }
-
-        /* Giriş Animasyonları */
-        @keyframes cardEntrance {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Mobil Uyum */
-        @media (max-width: 480px) {
-            .card { padding: 40px 25px; }
-            .title-wrapper h1 { font-size: 50px; }
-            .file-panel { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .verified-tag { align-self: flex-end; }
-            .security-footer { flex-direction: column; gap: 15px; }
-        }
     </style>
 </head>
 <body>
-
-    <div class="main-container">
-        <div class="card">
-            <div class="brand-badge">EMLOXA WARE</div>
-            
-            <div class="title-wrapper">
-                <h1>PEAK</h1>
-            </div>
-            <div class="subtitle">Resmî Dağıtım ve İndirme Merkezi</div>
-
-            <div class="file-panel">
-                <div class="file-info-group">
-                    <div class="file-icon-box">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M20 6h-8l-2-2H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-1 11h-2v-2h2v2zm0-3h-2v-2h2v2zm0-3h-2V9h2v2z"/>
-                        </svg>
-                    </div>
-                    <div class="file-texts">
-                        <div class="file-name">PEAK.rar</div>
-                        <div class="file-type">RAR Arşiv Dosyası</div>
-                    </div>
-                </div>
-                <div class="verified-tag">Güvenli</div>
-            </div>
-
-            <a href="https://dl1.lim1.dosyaupload.com/hhbP/PEAK.rar?download_token=4706cc3dc160dc5370392a40cbd3049ee65f24c355ef9370b635bef1b95c74a8" class="download-link-wrapper">
-                <button class="btn-premium-download">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M5 20h14v-2H5v2zm7-18L5.33 11h4.24v4h4.85v-4h4.24L12 2z"/>
-                    </svg>
-                    DOSYAYI İNDİR
-                </button>
-            </a>
-
-            <div class="security-footer">
-                <div class="secure-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-                    </svg>
-                    SHA-256 Korumalı
-                </div>
-                <div class="secure-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 12 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                    </svg>
-                    Sürüm: 1.0.0
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <h1>PEAK</h1>
+        <p>Resmi İndirme Merkezi</p>
+        
+        <a href="https://dl1.lim1.dosyaupload.com/hhbP/PEAK.rar?download_token=4706cc3dc160dc5370392a40cbd3049ee65f24c355ef9370b635bef1b95c74a8" class="download-btn">
+            <svg class="download-icon" viewBox="0 0 24 24">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            </svg>
+            PEAK.rar
+        </a>
     </div>
-
 </body>
 </html>
